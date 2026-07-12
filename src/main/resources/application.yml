@@ -1,0 +1,29 @@
+  topic:
+    name: "javatechie-avro"
+  server:
+    port: 8181
+# this setting is for docker, like schema registry and port all
+  spring:
+    kafka:
+      producer:
+        bootstrap-server: "127.0.0.1:9092" # this 127.0.0.1 is docker running ip address
+        key-serializer: "org.apache.kafka.common.serialization.StringSerializer"
+        value-serializer: "io.confluent.kafka.serializer.KafkaAvroSerializer"
+        properties:
+          schema:
+            registry:
+              url: "http://127.0.0.1:8181"
+
+      consumer:
+        group-id: "javatechie-new"
+        bootstrap-server: "127.0.0.1:9092"
+        key-deserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+        value-deserializer: "io.confluent.kafka.serializer.KafkaAvroDeSerializer"
+        auto-offset-reset : "earliest"
+        properties:
+          schema:
+            registry:
+              url: "http://127.0.0.1:8181"
+          specific:
+            avro:
+              reader: "true"
