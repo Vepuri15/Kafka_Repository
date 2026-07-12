@@ -18,7 +18,7 @@ public class EventController {
     @PostMapping("/events")
     public String sendMessage(@RequestBody Employee employee){
         producer.send(employee);
-        System.out.println("added some comments");
+        System.out.println("added some changes to feature branch for PR");
         return "Message published";
     }
 
