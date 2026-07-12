@@ -22,4 +22,10 @@ public class EventController {
         return "Message published";
     }
 
+    @PostMapping("/publish")
+    public String publishMessage(@RequestBody Employee employee){
+        producer.send(employee);
+        System.out.println("added some comments");
+        return "Message published";
+    }
 }
