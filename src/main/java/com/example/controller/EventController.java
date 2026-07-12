@@ -19,6 +19,7 @@ public class EventController {
     public String sendMessage(@RequestBody Employee employee){
         producer.send(employee);
         System.out.println("added some changes to feature branch for PR");
+        System.out.println("added some more changes to pull from branch");
         return "Message published";
     }
 
